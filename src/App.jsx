@@ -7,7 +7,7 @@ const themes = [
   { key: 3, bgColor: "bg-blue-600", textColor: "text-white", label: "B" },
 ];
 
-function App({}) {
+function App() {
   const [theme, setTheme] = useState({
     bgColor: "bg-green-900",
     textColor: "text-white",
@@ -16,7 +16,7 @@ function App({}) {
   return (
     <div className={`h-screen w-screen duration-300 ${theme.bgColor}`}>
       <div className="w-full h-full flex justify-center items-center ">
-        <h1 className={`text-6xl ${theme.textColor}`}>
+        <h1 className={`text-9xl ${theme.textColor}`}>
           Background Changer 1.0
         </h1>
       </div>

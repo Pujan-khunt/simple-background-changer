@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function ThemeButton({ bgColor, textColor, setTheme, label }) {
   return (
@@ -9,6 +10,13 @@ function ThemeButton({ bgColor, textColor, setTheme, label }) {
       {label}
     </button>
   );
+}
+
+ThemeButton.propTypes = {
+  bgColor: PropTypes.string.isRequired,
+  textColor: PropTypes.string.isRequired,
+  setTheme: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired
 }
 
 export default ThemeButton;
