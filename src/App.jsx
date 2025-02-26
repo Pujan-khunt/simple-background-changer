@@ -1,40 +1,39 @@
 import React, { useState } from "react";
+import ThemeButton from "./components/ThemeButton";
+
+const themes = [
+  { key: 1, bgColor: "bg-red-500", textColor: "text-yellow-500", label: "R" },
+  { key: 2, bgColor: "bg-green-500", textColor: "text-black", label: "G" },
+  { key: 3, bgColor: "bg-blue-600", textColor: "text-white", label: "B" },
+];
 
 function App({}) {
-  const [bgColor, setBgColor] = useState("bg-green-900");
-  const [fontColor, setFontColor] = useState("text-white");
-
-  function handleChange(bgColor, fontColor) {
-    setBgColor(bgColor);
-    setFontColor(fontColor);
-  }
+  const [theme, setTheme] = useState({
+    bgColor: "bg-green-900",
+    textColor: "text-white",
+  });
 
   return (
-    <div className={`h-screen w-screen duration-300 ${bgColor}`}>
+    <div className={`h-screen w-screen duration-300 ${theme.bgColor}`}>
       <div className="w-full h-full flex justify-center items-center ">
-        <h1 className={`text-6xl ${fontColor}`}>Background Changer 1.0</h1>
+        <h1 className={`text-6xl ${theme.textColor}`}>
+          Background Changer 1.0
+        </h1>
       </div>
 
       <div className="w-full flex justify-center">
         <div className="border border-white shadow-lg fixed flex gap-4 justify-center bottom-20 bg-gray-500 py-5 px-4 rounded-4xl">
-          <button
-            onClick={() => handleChange("bg-red-500", "text-yellow-500")}
-            className="shadow-lg h-10 w-16 rounded-4xl bg-red-500"
-            >
-            R
-          </button>
-          <button
-            onClick={() => handleChange("bg-green-500", "text-black")}
-            className="shadow-lg h-10 w-16 rounded-4xl bg-green-500"
-            >
-            G
-          </button>
-          <button
-            onClick={() => handleChange("bg-blue-600", "text-white")}
-            className="shadow-lg h-10 w-16 rounded-4xl bg-blue-600"
-          >
-            B
-          </button>
+          {themes.map((theme) => {
+            return (
+              <ThemeButton
+                key={theme.key}
+                bgColor={theme.bgColor}
+                textColor={theme.textColor}
+                setTheme={setTheme}
+                label={theme.label}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
